@@ -7,14 +7,13 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAFL2aqLV_Mwm_OFotvkCGpz7CVjJNZ20Q",
-  authDomain: "geoguessr-77356.firebaseapp.com",
-  databaseURL: "https://geoguessr-77356-default-rtdb.firebaseio.com",
-  projectId: "geoguessr-77356",
-  storageBucket: "geoguessr-77356.appspot.com",
-  messagingSenderId: "1079462837049",
-  appId: "1:1079462837049:web:f630d1430445466eba46e8",
-  measurementId: "G-0L4P9P98TZ"
+  apiKey: "AIzaSyDX-15jeInrdyyeu0au4RFlEVGcbtUbr0A",
+  authDomain: "geoguesser-marcp.firebaseapp.com",
+  projectId: "geoguesser-marcp",
+  storageBucket: "geoguesser-marcp.appspot.com",
+  messagingSenderId: "517771862513",
+  appId: "1:517771862513:web:ecf5e6321ed32567cda450",
+  measurementId: "G-6TV622CNK2"
 };
 
 const app = initializeApp(firebaseConfig);

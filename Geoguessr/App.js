@@ -5,8 +5,8 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Importa tus pantallas
-import GameScreen from './screens/PantallaJuego';
-import StartScreen from './screens/PantallaPrincipal';
+import GameScreen from './screens/JocScreen';
+import StartScreen from './screens/MainScreen';
 
 const Stack = createNativeStackNavigator();
 

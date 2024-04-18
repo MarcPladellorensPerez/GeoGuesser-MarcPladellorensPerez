@@ -7,7 +7,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import getDistance from 'geolib/es/getDistance';
 import { Button, Text } from 'react-native-paper';
 
-const PantallaJuego = () => {
+const JocScreen = () => {
   const [questionsList, setQuestionsList] = useState([]);
   const [currentQuestionIndex, setQuestionIndex] = useState(0);
   const [markerPosition, setMarkerPosition] = useState(null);
@@ -78,7 +78,7 @@ const PantallaJuego = () => {
   useEffect(() => {
       const fetchQuestions = async () => {
           try {
-              const qCol = collection(db, 'Ubicaciones');
+              const qCol = collection(db, 'Ubicacions');
               const questionsSnapshot = await getDocs(qCol);
               const qList = questionsSnapshot.docs.map((doc) => doc.data());
               setQuestionsList(qList);
@@ -86,7 +86,7 @@ const PantallaJuego = () => {
                   setCurrentQuestion(qList[0]);
               }
           } catch (error) {
-              console.error('Error fetching questions:', error);
+              console.error('Error al cargar les preguntes:', error);
           }
       };
 
@@ -110,14 +110,15 @@ const PantallaJuego = () => {
                     />
                 )}
             </MapView>
-            {showPoints && <Text style={styles.points}>{`Puntos: ${points}`}</Text>}
+            {showPoints && <Text style={styles.points}>{`Has conseguit ${points} punts!`}</Text>}
             {showCheckLocation && (
                 <Button
                     mode="contained"
                     style={styles.button}
                     onPress={checkLocation}
+                    labelStyle={styles.buttonText} // Añade este estilo para el texto del botón
                 >
-                    Verificar Ubicación
+                    Verificar Ubicació
                 </Button>
             )}
             {showPoints && (
@@ -125,12 +126,14 @@ const PantallaJuego = () => {
                     mode="contained"
                     style={styles.button}
                     onPress={nextQuestion}
+                    labelStyle={styles.buttonText} // Añade este estilo para el texto del botón
                 >
-                    Siguiente Pregunta
+                    Següent Pregunta
                 </Button>
             )}
             <Text style={styles.question}>{questionsList[currentQuestionIndex]?.Title}</Text>
-            <Text style={styles.totalPoints}>{`Puntos Totales: ${totalPoints}`}</Text>
+            <Text style={styles.totalPoints}>{`Puntuació: ${totalPoints}`}</Text>
+            <View style={styles.emptyContainer}></View>
         </View>
     );
 }
@@ -138,7 +141,7 @@ const PantallaJuego = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F9F7F6',
+        backgroundColor: 'black',
     },
     map: {
         flex: 1,
@@ -148,28 +151,32 @@ const styles = StyleSheet.create({
         marginTop: 10,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: '#333',
+        color: 'white',
     },
     button: {
-        backgroundColor: '#4CAF50',
+        backgroundColor: '#0069c0', // Cambia el color del botón a azul eléctrico
         paddingVertical: 15,
         paddingHorizontal: 30,
         borderRadius: 10,
         marginTop: 20,
         alignSelf: 'center',
     },
+    buttonText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
     question: {
         marginTop: 20,
         fontSize: 18,
         textAlign: 'center',
-        color: '#333',
+        color: 'white',
     },
     totalPoints: {
         fontSize: 20,
         marginTop: 10,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: '#333',
+        color: 'white',
     },
     textInput: {
         height: 40,
@@ -179,6 +186,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         paddingHorizontal: 10,
     },
+    emptyContainer: {
+        height: 50,
+        backgroundColor: 'transparent',
+    },
 });
 
-export default PantallaJuego;
+export default JocScreen;
