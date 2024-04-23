@@ -131,6 +131,9 @@ const JocScreen = () => {
                     Següent Pregunta
                 </Button>
             )}
+            {questionsList.length === currentQuestionIndex && (
+                <Text style={styles.endText}>Has guanyat</Text>
+            )}
             <Text style={styles.question}>{questionsList[currentQuestionIndex]?.Title}</Text>
             <Text style={styles.totalPoints}>{`Puntuació: ${totalPoints}`}</Text>
             <View style={styles.emptyContainer}></View>
@@ -189,6 +192,13 @@ const styles = StyleSheet.create({
     emptyContainer: {
         height: 50,
         backgroundColor: 'transparent',
+    },
+    endText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'white',
+        marginTop: 20,
     },
 });
 
